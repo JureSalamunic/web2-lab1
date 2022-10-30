@@ -129,6 +129,14 @@ app.post('/commentdel', (req, res) => {
   res.redirect('/comments')
 })
 
+app.post('/commchg', (req, res) => {
+  console.log(req.body)
+  for (var key in req.body){
+    pom = key.split(" ")
+    komentari[parseInt(pom[0])][parseInt(pom[1])][2] = req.body[key]
+}
+  res.redirect('/comments')
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
