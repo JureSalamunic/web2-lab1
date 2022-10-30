@@ -58,18 +58,20 @@ app.get('/', (req, res) => {
         pom[j[0]][4] =pom[j[0]][4] +  3
         pom[j[0]][0] = pom[j[0]][0] + 1
         pom[j[3]][2] =pom[j[3]][2] + 1
+        pom[j[0]][3] = pom[j[0]][3] + Math.abs(parseInt(j[1])-parseInt(j[2]))
+        pom[j[3]][3] = pom[j[3]][3] + -Math.abs(parseInt(j[1])-parseInt(j[2]))
       }else if (parseInt(j[1]) < parseInt(j[2])){
         pom[j[3]][4]= pom[j[3]][4] + 3
         pom[j[3]][0] = pom[j[3]][0] + 1
         pom[j[0]][2]= pom[j[0]][2]+ 1
+        pom[j[0]][3] = pom[j[0]][3] + -Math.abs(parseInt(j[1])-parseInt(j[2]))
+        pom[j[3]][3] = pom[j[3]][3] + Math.abs(parseInt(j[1])-parseInt(j[2]))
       }else{
         pom[j[0]][4] = pom[j[0]][4] + 1
         pom[j[3]][4] =pom[j[3]][4] +  1
         pom[j[0]][1] =pom[j[0]][1]+ 1
         pom[j[3]][1] =pom[j[3]][1] + 1
       }
-      pom[j[0]][3] = pom[j[0]][3] + parseInt(j[1])-parseInt(j[2])
-      pom[j[3]][3] = pom[j[3]][3] + parseInt(j[1])-parseInt(j[2])
     }
     } 
   console.log(pom)
