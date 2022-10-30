@@ -23,7 +23,7 @@ const config = {
 app.set('view engine', 'ejs')
 app.use(auth(config));
 kolo = [[['Istra',0,2,'Hajduk'],['Varaždin',0,1,'Slaven Belupo'],['Šibenik',0,1,'Rijeka'],['Osijek',2,1,'Gorica'],['Dinamo',3,2,'Lokomotiva']],[['Lokomotiva',2,1,'Osijek'],['Slaven Belupo',1,5,'Dinamo'],['Gorica',0,0,'Šibenik'],['Istra',0,2,'Varaždin'],['Hajduk',2,0,'Rijeka']],[['Rijeka',1,1,'Gorica'],['Osijek',0,0,'Slaven Belupo'],['Varaždin',0,2,'Hajduk'],['Dinamo',4,1,'Istra'],['Šibenik',2,1,'Lokomotiva']],[['Lokomotiva',3,1,'Rijeka'],['Istra',1,0,'Osijek'],['Slaven Belupo',0,0,'Šibenik'],['Varaždin',1,1,'Dinamo'],['Hajduk',3,1,'Gorica']],[['Rijeka',0,1,'Slaven Belupo'],['Osijek',2,2,'Varaždin'],['Dinamo',4,1,'Hajduk'],['Gorica',3,2,'Lokomotiva'],['Šibenik',0,0,'Istra']],[['Hajduk','-','-','Lokomotiva'],['Istra','-','-','Rijeka'],['Dinamo','-','-','Osijek'],['Varaždin','-','-','Šibenik'],['Slaven Belupo','-','-','Gorica']]]
-komentari=[[['gecekay370','1/11/2022','Super tekma!']],[['jure.salamunic','1/11/2022','Super tekma!']],[],[['gecekay370','1/11/2022','Losa utakmica Hajduka...']],[['gecekay370','1/11/2022','Bravo Petko!']],[]]
+komentari=[[['gecekay370','1/11/2022','Super tekma!']],[['noyic25870','1/11/2022','Super tekma!']],[],[['gecekay370','1/11/2022','Losa utakmica Hajduka...']],[['noyic25870','1/11/2022','Bravo Petko!']],[]]
 
 data = [['Dinamo',3,4,5,6,7],['Hajduk',3,4,5,6,7],]
 
@@ -87,12 +87,12 @@ app.get('/', (req, res) => {
   //res.send(req.oidc.isAuthenticated() ? 'Hello World!' : 'Not logged in!')
 })
 app.get('/mw', (req, res) => {
-  req.oidc.isAuthenticated() ? res.render('mwadmin', {nick: req.oidc.user['nickname'],ath:true, kolo: kolo}) : res.render('mw', {nick:'-',ath:false, kolo: kolo,komentari:komentari})
+  req.oidc.isAuthenticated() && req.oidc.user['nickname']=='behaf51522' ? res.render('mwadmin', {nick: req.oidc.user['nickname'],ath:true, kolo: kolo}) : res.render('mw', {nick:'-',ath:false, kolo: kolo,komentari:komentari})
   //res.sendFile(__dirname+"/main.html")
   //res.send(req.oidc.isAuthenticated() ? 'Hello World!' : 'Not logged in!')
 })
 app.get('/comments', (req, res) => {
-  req.oidc.isAuthenticated() ? req.oidc.user['nickname']=='jure.salamunic' ? res.render('comments', {ath:true, admin :true,kolo: komentari,nick:req.oidc.user['nickname']}): res.render('comments', {ath:true, admin :false,kolo: komentari,nick:req.oidc.user['nickname']}) : res.render('comments', {ath:false,admin:false, kolo: komentari,nick:"0"})
+  req.oidc.isAuthenticated() ? req.oidc.user['nickname']=='behaf51522' ? res.render('comments', {ath:true, admin :true,kolo: komentari,nick:req.oidc.user['nickname']}): res.render('comments', {ath:true, admin :false,kolo: komentari,nick:req.oidc.user['nickname']}) : res.render('comments', {ath:false,admin:false, kolo: komentari,nick:"0"})
 
 })
 app.post('/mwpost', (req, res) => {
