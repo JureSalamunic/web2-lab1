@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 const { auth ,claimIncludes} = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 var parser = require('body-parser');
@@ -11,15 +11,15 @@ app.use(function(req,res,next){
   res.locals.userValue = null;
   next();
 })
-
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'http://localhost:3000',
-  clientID: 'fQjSot189Zzto9YLOD3TdwXBYSZ8iZlw',
+  secret: process.env.SECRET || 'Something',
+  baseURL: process.env.APP_BASE_URL || 'http://localhost:3000',
+  clientID: process.env.CLIENT_ID || 'fQjSot189Zzto9YLOD3TdwXBYSZ8iZlw',
   issuerBaseURL: 'https://dev-8e36uq261bya3e5h.us.auth0.com'
 };
+
 app.set('view engine', 'ejs')
 app.use(auth(config));
 kolo = [[['Istra',0,2,'Hajduk'],['Varaždin',0,1,'Slaven Belupo'],['Šibenik',0,1,'Rijeka'],['Osijek',2,1,'Gorica'],['Dinamo',3,2,'Lokomotiva']],[['Lokomotiva',2,1,'Osijek'],['Slaven Belupo',1,5,'Dinamo'],['Gorica',0,0,'Šibenik'],['Istra',0,2,'Varaždin'],['Hajduk',2,0,'Rijeka']],[['Rijeka',1,1,'Gorica'],['Osijek',0,0,'Slaven Belupo'],['Varaždin',0,2,'Hajduk'],['Dinamo',4,1,'Istra'],['Šibenik',2,1,'Lokomotiva']],[['Lokomotiva',3,1,'Rijeka'],['Istra',1,0,'Osijek'],['Slaven Belupo',0,0,'Šibenik'],['Varaždin',1,1,'Dinamo'],['Hajduk',3,1,'Gorica']],[['Rijeka',0,1,'Slaven Belupo'],['Osijek',2,2,'Varaždin'],['Dinamo',4,1,'Hajduk'],['Gorica',3,2,'Lokomotiva'],['Šibenik',0,0,'Istra']],[['Hajduk','-','-','Lokomotiva'],['Istra','-','-','Rijeka'],['Dinamo','-','-','Osijek'],['Varaždin','-','-','Šibenik'],['Slaven Belupo','-','-','Gorica']]]
