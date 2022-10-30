@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3001
 const { auth ,claimIncludes} = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 var parser = require('body-parser');
