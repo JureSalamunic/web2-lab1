@@ -15,7 +15,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.SECRET || 'Something',
-  baseURL: process.env.APP_URL || 'http://localhost:3000',
+  baseURL: 'https://web2-lab1-pf4d.onrender.com', //process.env.APP_URL || 'https://web2-lab1-pf4d.onrender.com/',
   clientID: process.env.CLIENT_ID || 'fQjSot189Zzto9YLOD3TdwXBYSZ8iZlw',
   issuerBaseURL: 'https://dev-8e36uq261bya3e5h.us.auth0.com'
 };
