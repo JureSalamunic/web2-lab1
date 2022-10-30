@@ -220,7 +220,7 @@ input[type=submit], input[type=reset] {
 						<%=cell%>
 						</td>
 						<%  }%>
-            <%if (nick == kolo[i][0] || admin){%>
+            <%if (nick == kolo[i][j][0] || admin){%>
               <form action="/commentdel" method="post">
                 <td><input style="background-color:#FF0000; padding: 10px 15px;border-radius: 25px;" type="submit" name="<%=i%> <%=j%>" value="Delete" /></td>
             </form>
